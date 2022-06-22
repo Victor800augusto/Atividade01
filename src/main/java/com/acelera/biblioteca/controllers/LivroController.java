@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.acelera.biblioteca.converts.LivroConvert;
 import com.acelera.biblioteca.dto.inputs.LivroInput;
-import com.acelera.biblioteca.dto.outputs.AutorOutput;
 import com.acelera.biblioteca.dto.outputs.LivroOutput;
-import com.acelera.biblioteca.entities.AutorEntity;
 import com.acelera.biblioteca.entities.LivroEntity;
 import com.acelera.biblioteca.services.LivroService;
 
@@ -61,5 +59,11 @@ public class LivroController {
 	public List<LivroOutput> listaTodos(){
 		List<LivroEntity> livros = livroService.listaTodos();
 		return livroConvert.entityToOutput(livros);
+	}
+	
+	@GetMapping("/{id}")
+	public LivroOutput buscaLivroPeloId(@PathVariable Long id) {
+		LivroEntity livroCadastrado = livroService.buscaPeloId(id);
+		return livroConvert.entityToOutput(livroCadastrado);
 	}
 }
