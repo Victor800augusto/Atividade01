@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,5 +43,12 @@ public class LivroController {
 		livroConvert.copyInputToEntity(livroCadastrado, livroInput);
 		LivroEntity livroAtualizado = livroService.alteraLivro(livroCadastrado);
 		return livroConvert.entityToOutput(livroAtualizado);
+	}
+	
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@DeleteMapping("/{id}")
+	public void deletaLivro(@PathVariable Long id) {
+		LivroEntity livroCadastrado = livroService.buscaPeloId(id);
+		livroService.deletaLivro(livroCadastrado);
 	}
 }

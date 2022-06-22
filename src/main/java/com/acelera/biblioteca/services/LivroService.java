@@ -23,4 +23,8 @@ public class LivroService {
 	public LivroEntity buscaPeloId(Long id) {
 		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado!"));
 	}
+	
+	public void deletaLivro(LivroEntity livroCadastrado) {
+		livroRepository.delete(livroCadastrado);
+	}
 }
