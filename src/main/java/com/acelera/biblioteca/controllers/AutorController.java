@@ -1,8 +1,11 @@
 package com.acelera.biblioteca.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -39,5 +42,11 @@ public class AutorController {
 		autorConvert.copyInputToEntity(autorCadastrado, autorInput);
 		AutorEntity autorAtualizado = autorService.alteraAutor(autorCadastrado);
 		return autorConvert.entityToOutput(autorAtualizado);
+	}
+	
+	@GetMapping
+	public List<AutorOutput> listaTodos(){
+		List<AutorEntity> autores = autorService.listaTodos();
+		return autorConvert.entityToOutput(autores);
 	}
 }

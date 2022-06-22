@@ -1,5 +1,8 @@
 package com.acelera.biblioteca.converts;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,5 +28,9 @@ public class AutorConvert {
 
 	public void copyInputToEntity(AutorEntity autorEntity, AutorInput autorInput) {
 		modelMapper.map(autorInput, autorEntity);
+	}
+	
+	public List<AutorOutput> entityToOutput(List<AutorEntity> autores) {
+		return autores.stream().map((autor) -> this.entityToOutput(autor)).collect(Collectors.toList());
 	}
 }
