@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "tb_autores")
-public class Autor {
+public class AutorEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

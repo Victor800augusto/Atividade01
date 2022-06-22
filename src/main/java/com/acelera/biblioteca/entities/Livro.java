@@ -30,5 +30,5 @@ public class Livro {
 	private Integer anoLancamento;
 
 	@ManyToMany
-	private List<Autor> autores;
+	private List<AutorEntity> autores;
 }
