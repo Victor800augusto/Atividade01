@@ -15,7 +15,7 @@ public class AutorService {
 	@Autowired
 	private AutorRepository autorRepository;
 	
-	public AutorEntity criaAutor(AutorEntity autorEntity) {
+	public AutorEntity cadastraAutor(AutorEntity autorEntity) {
 		return autorRepository.save(autorEntity);
 	}
 	

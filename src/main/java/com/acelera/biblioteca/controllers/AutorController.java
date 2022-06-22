@@ -33,7 +33,7 @@ public class AutorController {
 	@PostMapping
 	public AutorOutput cadastraAutor(@RequestBody @Valid AutorInput autorInput) {
 		AutorEntity autorEntity = autorConvert.inputToEntity(autorInput);
-		AutorEntity novoAutor = autorService.criaAutor(autorEntity);
+		AutorEntity novoAutor = autorService.cadastraAutor(autorEntity);
 		return autorConvert.entityToOutput(novoAutor);
 	}
 	
