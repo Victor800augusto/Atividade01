@@ -1,10 +1,13 @@
 package com.acelera.biblioteca.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.acelera.biblioteca.converts.LivroConvert;
 import com.acelera.biblioteca.dto.inputs.LivroInput;
+import com.acelera.biblioteca.dto.outputs.AutorOutput;
 import com.acelera.biblioteca.dto.outputs.LivroOutput;
+import com.acelera.biblioteca.entities.AutorEntity;
 import com.acelera.biblioteca.entities.LivroEntity;
 import com.acelera.biblioteca.services.LivroService;
 
@@ -50,5 +55,11 @@ public class LivroController {
 	public void deletaLivro(@PathVariable Long id) {
 		LivroEntity livroCadastrado = livroService.buscaPeloId(id);
 		livroService.deletaLivro(livroCadastrado);
+	}
+	
+	@GetMapping
+	public List<LivroOutput> listaTodos(){
+		List<LivroEntity> livros = livroService.listaTodos();
+		return livroConvert.entityToOutput(livros);
 	}
 }

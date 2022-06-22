@@ -1,5 +1,7 @@
 package com.acelera.biblioteca.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +28,9 @@ public class LivroService {
 	
 	public void deletaLivro(LivroEntity livroCadastrado) {
 		livroRepository.delete(livroCadastrado);
+	}
+	
+	public List<LivroEntity> listaTodos(){
+		return livroRepository.findAll();
 	}
 }
