@@ -19,6 +19,7 @@ import com.acelera.biblioteca.dto.outputs.AutorOutput;
 import com.acelera.biblioteca.entities.AutorEntity;
 import com.acelera.biblioteca.services.AutorService;
 
+
 @RestController
 @RequestMapping("/api/autores")
 public class AutorController {
@@ -48,5 +49,11 @@ public class AutorController {
 	public List<AutorOutput> listaTodos(){
 		List<AutorEntity> autores = autorService.listaTodos();
 		return autorConvert.entityToOutput(autores);
+	}
+	
+	@GetMapping("/{id}")
+	public AutorOutput buscaAutorPeloId(@PathVariable Long id) {
+		AutorEntity autorCadastrado = autorService.buscaPeloId(id);
+		return autorConvert.entityToOutput(autorCadastrado);
 	}
 }
