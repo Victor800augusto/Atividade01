@@ -4,7 +4,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -32,5 +34,13 @@ public class LivroController {
 		LivroEntity livroEntity = livroConvert.inputToEntity(livroInput);
 		LivroEntity novoLivro = livroService.cadastraLivro(livroEntity);
 		return livroConvert.entityToOutput(novoLivro);
+	}
+	
+	@PutMapping("/{id}")
+	public LivroOutput alteraLivro(@PathVariable Long id,@RequestBody @Valid LivroInput livroInput) {
+		LivroEntity livroCadastrado = livroService.buscaPeloId(id);
+		livroConvert.copyInputToEntity(livroCadastrado, livroInput);
+		LivroEntity livroAtualizado = livroService.alteraLivro(livroCadastrado);
+		return livroConvert.entityToOutput(livroAtualizado);
 	}
 }

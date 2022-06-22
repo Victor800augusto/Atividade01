@@ -15,4 +15,12 @@ public class LivroService {
 	public LivroEntity cadastraLivro(LivroEntity livroEntity) {
 		return livroRepository.save(livroEntity);
 	}
+	
+	public LivroEntity alteraLivro(LivroEntity livroEntity) {
+		return livroRepository.save(livroEntity);
+	}
+	
+	public LivroEntity buscaPeloId(Long id) {
+		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado!"));
+	}
 }
