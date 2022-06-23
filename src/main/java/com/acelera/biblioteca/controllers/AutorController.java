@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acelera.biblioteca.converts.AutorConvert;
+import com.acelera.biblioteca.converts.LivroConvert;
 import com.acelera.biblioteca.dto.inputs.AutorInput;
 import com.acelera.biblioteca.dto.outputs.AutorOutput;
+import com.acelera.biblioteca.dto.outputs.LivroSemAutorOutput;
 import com.acelera.biblioteca.entities.AutorEntity;
+import com.acelera.biblioteca.entities.LivroEntity;
 import com.acelera.biblioteca.services.AutorService;
+import com.acelera.biblioteca.services.LivroService;
 
 
 @RestController
@@ -29,6 +33,12 @@ public class AutorController {
 	
 	@Autowired
 	private AutorConvert autorConvert;
+	
+	@Autowired
+	private LivroService livroService;
+	
+	@Autowired
+	private LivroConvert livroConvert;
 	
 	@PostMapping
 	public AutorOutput cadastraAutor(@RequestBody @Valid AutorInput autorInput) {
@@ -55,5 +65,12 @@ public class AutorController {
 	public AutorOutput buscaAutorPeloId(@PathVariable Long id) {
 		AutorEntity autorCadastrado = autorService.buscaPeloId(id);
 		return autorConvert.entityToOutput(autorCadastrado);
+	}
+	
+	@GetMapping("/{id}/livros")
+	public List<LivroSemAutorOutput> buscaLivrosPeloIdAutor(@PathVariable Long id){
+		autorService.buscaPeloId(id);
+		List<LivroEntity> livros = livroService.listaLivrosPeloIdAutor(id);
+		return livroConvert.entityToSemAutorOutput(livros);
 	}
 }

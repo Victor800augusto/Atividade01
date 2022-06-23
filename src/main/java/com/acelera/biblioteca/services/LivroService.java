@@ -26,6 +26,10 @@ public class LivroService {
 		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado!"));
 	}
 	
+	public List<LivroEntity> listaLivrosPeloIdAutor(Long id){
+		return livroRepository.findAllByAutoresId(id);
+	}
+	
 	public void deletaLivro(LivroEntity livroCadastrado) {
 		livroRepository.delete(livroCadastrado);
 	}
