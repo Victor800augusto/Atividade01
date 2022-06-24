@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.acelera.biblioteca.entities.AutorEntity;
+import com.acelera.biblioteca.exceptions.AutorNotFoundException;
 import com.acelera.biblioteca.repositories.AutorRepository;
 
 
@@ -24,7 +25,7 @@ public class AutorService {
 	}
 	
 	public AutorEntity buscaPeloId(Long id) {
-		return autorRepository.findById(id).orElseThrow(() -> new RuntimeException("Autor não encontrado!"));
+		return autorRepository.findById(id).orElseThrow(() -> new AutorNotFoundException(id));
 	}
 	
 	public List<AutorEntity> listaTodos() {

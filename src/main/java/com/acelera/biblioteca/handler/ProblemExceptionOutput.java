@@ -1,0 +1,26 @@
+package com.acelera.biblioteca.handler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import lombok.Getter;
+
+@Getter
+public class ProblemExceptionOutput {
+
+	private int statusCode;
+	private String message;
+	
+	private List<FieldsExceptionOutput> campos;
+	
+	public ProblemExceptionOutput(int statusCode, String message) {
+		this.statusCode = statusCode;
+		this.message = message;
+		campos = new ArrayList<>();
+	}
+
+	public ProblemExceptionOutput(int statusCode, String message, List<FieldsExceptionOutput> campos) {
+		this(statusCode, message);
+		this.campos = campos;
+	}
+}
