@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.acelera.biblioteca.entities.LivroEntity;
+import com.acelera.biblioteca.exceptions.NotFoundBussinessException;
 import com.acelera.biblioteca.repositories.LivroRepository;
 
 @Service
@@ -23,7 +24,7 @@ public class LivroService {
 	}
 	
 	public LivroEntity buscaPeloId(Long id) {
-		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado!"));
+		return livroRepository.findById(id).orElseThrow(() -> new NotFoundBussinessException("Não foi encontrado livro de id " + id));
 	}
 	
 	public List<LivroEntity> listaLivrosPeloIdAutor(Long id){
