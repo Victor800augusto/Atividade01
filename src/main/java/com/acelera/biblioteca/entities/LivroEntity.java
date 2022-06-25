@@ -26,7 +26,7 @@ public class LivroEntity {
 	@Column(name = "titulo", length=200)
 	private String titulo;
 
-	@Column(name = "ano_lancamento",length=4)
+	@Column(name = "ano_lancamento" )
 	private Integer anoLancamento;
 
 	@ManyToMany

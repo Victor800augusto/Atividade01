@@ -2,6 +2,7 @@ package com.acelera.biblioteca.dto.inputs;
 
 import java.util.List;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,4 +23,14 @@ public class LivroInput {
 
 	@NotEmpty(message = "O livro deve ter pelo menos 1 autor!")
 	private List<Long> idsAutores;
+	
+	@AssertTrue(message = "O ano de lançamento está inválido!. Deve conter 4 dígitos.")
+	public boolean isAnoValido() {
+
+		if (anoLancamento.toString().length()!= 4) {
+			return false;
+		}
+
+		return true;
+	}
 }
