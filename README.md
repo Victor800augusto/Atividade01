@@ -10,11 +10,11 @@ tabela inferior e apertar em 'Next' -> Quando terminar apertar em 'Next' -> Acei
 em 'Trust selected' -> 'Restart Now'.
 
 # Execução do projeto
-git clone https://github.com/Victor800augusto/Atividade01.git
+1 - git clone https://github.com/Victor800augusto/Atividade01.git
 
-Importar projeto no spring-tool-suite4 como Existing Maven Projects.
+2 - Importar projeto no spring-tool-suite4 como 'Existing Maven Projects'.
 
-Executar projeto.
+3 - Executar projeto.
 
 # Swagger
 Para acessar o swagger UI acesse a url com a aplicação rodando - http://localhost:8080/swagger-ui.html#/
