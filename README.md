@@ -1,5 +1,11 @@
 # AVALIAÇÃO 01 – ACELERA G&P
 
+#Prerequisitos
+Java 17 
+Mysql
+Na sua IDE ter o plugin do lombok habilitado
+
+#Execução
 git clone https://github.com/Victor800augusto/Atividade01.git
 
 Importar projeto no spring-tool-suite4 como Existing Maven Projects
