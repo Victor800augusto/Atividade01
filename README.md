@@ -2,7 +2,9 @@
 
 # Pré Requisitos
 Java 17 
+
 Mysql
+
 Na sua IDE ter o plugin do lombok habilitado
 
 # Execução
